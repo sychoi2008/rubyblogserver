@@ -4,6 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # 또한, json으로 리턴하기 위해서 
 
   respond_to :json # 이 컨트롤러는 json으로만 요청/응답한다
+  skip_before_action :authenticate_user!, only: [:create, :new]
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
     build_resource(sign_up_params)

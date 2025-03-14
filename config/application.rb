@@ -24,11 +24,22 @@ module Rubyserver
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+################
+    # config.api_only = false
 
-    config.api_only = false
+    # # 세션과 쿠키를 활성화시킨다
+    # config.middleware.use ActionDispatch::Cookies
+    # #config.middleware.use ActionDispatch::Session::CookieStore, key: '_your_app_session'
 
-    # 세션과 쿠키를 활성화시킨다
-    config.middleware.use ActionDispatch::Cookies
-    #config.middleware.use ActionDispatch::Session::CookieStore, key: '_your_app_session'
+    config.api_only = true
+
+    config.middleware.insert_before 0, Rack::Cors do
+      # 위 cors.rb랑 같은 설정
+    end
+
+# ✅ 쿠키/세션 활성화 추가!
+config.middleware.use ActionDispatch::Cookies
+config.middleware.use ActionDispatch::Session::CookieStore, key: '_rubyserver_session'
+
   end
 end
