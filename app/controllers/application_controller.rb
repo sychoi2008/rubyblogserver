@@ -1,17 +1,10 @@
+# API 전용 컨트롤러 선언
+# 뷰 렌더링 X, 쿠키 세션 CSRF 기본으로 비활성화 
 class ApplicationController < ActionController::API
-  # protect_from_forgery with: :exception
 
-  # respond_to :json
+  include ActionController::Cookies # 세션 방식이라 쿠키 필요(브라우저에 넘겨줄 때에도 받을 때에도)
 
-  #protect_from_forgery with: :null_session
+  before_action :authenticate_user! # 기본적으로 모든 컨트롤러는 로그인 된 유저만 가능
 
-  #before_action :authenticate_user! # Devise 인증
-
-  include ActionController::Cookies  # ✅ 쿠키 기능 추가 (세션 쿠키 전달을 위해 필요)
-
-
-
-  before_action :authenticate_user!
-
-  respond_to :json
+  respond_to :json # 모든 응답은 JSON으로 
 end

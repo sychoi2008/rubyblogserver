@@ -6,7 +6,7 @@ ruby '3.2.7'
 gem 'rails', '~> 7.1.5'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem 'sprockets-rails'
+#gem 'sprockets-rails'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
@@ -51,6 +51,8 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
