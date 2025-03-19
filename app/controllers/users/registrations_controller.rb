@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   respond_to :json # 이 컨트롤러는 json으로만 요청/응답한다
   skip_before_action :authenticate_user!, only: [:create, :new] # 회원가입 시점에는 인증 스킵하기 
-  skip_before_action :verify_authenticity_token, only: [:create] # CSRF 토큰 검사는 생략함 
+  #skip_before_action :verify_authenticity_token, only: [:create] # CSRF 토큰 검사는 생략함 
 
   def create
     # resource: 지금 가입하려는 User(유저가 보낸 가입하려는 객체)

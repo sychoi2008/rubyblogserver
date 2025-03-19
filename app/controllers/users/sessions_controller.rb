@@ -45,6 +45,6 @@ class Users::SessionsController < Devise::SessionsController # 로그인용 컨�
 
   # resource_name : 자동으로 인식하는 모델 이름(여기서는 User)
   def auth_options
-    { scope: resource_name } # recall : 인증 실패하면 어디로 보낼지? 근데 우린 api 서버라서 무시하고 있음
+    { scope: resource_name }
   end
 end
